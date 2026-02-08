@@ -13,24 +13,24 @@ struct HabitCard: View {
     
     var body: some View {
         HStack(spacing: Theme.spacingL) {
-            Button(action: onToggle) {
-                ZStack {
+            ZStack {
+                Circle()
+                    .stroke(Theme.accent, lineWidth: 2)
+                    .frame(width: 44, height: 44)
+                
+                if habit.isCompletedToday() {
                     Circle()
-                        .stroke(Theme.accent, lineWidth: 2)
+                        .fill(Theme.accent)
                         .frame(width: 44, height: 44)
                     
-                    if habit.isCompletedToday() {
-                        Circle()
-                            .fill(Theme.accent)
-                            .frame(width: 44, height: 44)
-                        
-                        Image(systemName: "checkmark")
-                            .font(.system(size: 18, weight: .bold))
-                            .foregroundColor(Theme.background)
-                    }
+                    Image(systemName: "checkmark")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(Theme.background)
                 }
             }
-            .buttonStyle(PlainButtonStyle())
+            .onTapGesture {
+                onToggle()
+            }
             
             VStack(alignment: .leading, spacing: Theme.spacingS) {
                 Text(habit.name)

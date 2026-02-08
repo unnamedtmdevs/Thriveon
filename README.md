@@ -17,6 +17,7 @@ Thriveon is a vibrant lifestyle app designed to enrich everyday life, promote pe
 - **Analytics & Insights**: Detailed analysis of productivity, habits, and personal growth trends
 - **Daily Motivation**: Rotating daily quotes to inspire and motivate users
 - **User Profile & Settings**: Customizable user preferences and data management
+- **Seed Data**: Pre-populated test data for immediate demonstration and testing (8 sample habits with realistic history)
 
 ### 📊 Analytics Features
 
@@ -133,6 +134,21 @@ xcodebuild build -scheme "Thriveon" -destination 'generic/platform=iOS Simulator
 open Thriveon.xcodeproj
 ```
 
+### Seed Data (Test Data)
+
+The app can optionally include pre-populated test data for demonstration:
+- **8 sample habits** with realistic completion history
+- **User profile** with statistics (200+ completions, 15+ day streaks)
+- **Varied categories**: Mindfulness, Health & Fitness, Learning, Productivity, Creativity
+
+**Current state: DISABLED** - App starts empty by default
+
+To enable seed data:
+- Open `Services/SeedDataService.swift`
+- Set `static let useSeedData = true`
+
+For more details, see [SEED_DATA.md](SEED_DATA.md)
+
 ### Preview Devices
 
 The app includes SwiftUI previews for:
@@ -201,6 +217,14 @@ Potential features for future releases:
 - Notifications and reminders
 - Export data functionality
 - Social sharing
+
+## 📚 Documentation
+
+- **README.md** - Project overview (this file)
+- **FEATURES.md** - Detailed feature documentation
+- **PROJECT_SUMMARY.md** - Complete project summary
+- **QUICK_START.md** - 60-second getting started guide
+- **SEED_DATA.md** - Test data documentation (NEW!)
 
 ## License
 

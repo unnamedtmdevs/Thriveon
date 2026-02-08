@@ -204,22 +204,46 @@ struct SettingsView: View {
                 Spacer()
             }
             
-            Button(action: {
-                showingResetAlert = true
-            }) {
-                HStack {
-                    Image(systemName: "exclamationmark.triangle.fill")
-                        .foregroundColor(Theme.accent)
-                    
-                    Text("Reset All Data")
-                        .font(Theme.body())
-                        .foregroundColor(Theme.textPrimary)
-                    
-                    Spacer()
+            VStack(spacing: Theme.spacingM) {
+                Button(action: {
+                    showingResetAlert = true
+                }) {
+                    HStack {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .foregroundColor(Theme.accent)
+                        
+                        Text("Reset All Data")
+                            .font(Theme.body())
+                            .foregroundColor(Theme.textPrimary)
+                        
+                        Spacer()
+                    }
+                    .padding(Theme.spacingL)
+                    .background(Theme.cardBackground)
+                    .cornerRadius(Theme.cornerRadiusM)
                 }
-                .padding(Theme.spacingL)
-                .background(Theme.cardBackground)
-                .cornerRadius(Theme.cornerRadiusM)
+                
+                if SeedDataService.useSeedData {
+                    Button(action: {
+                        SeedDataService.shared.resetSeedData()
+                        SeedDataService.shared.createSeedDataIfNeeded()
+                        viewModel.loadData()
+                    }) {
+                        HStack {
+                            Image(systemName: "arrow.clockwise")
+                                .foregroundColor(Theme.success)
+                            
+                            Text("Reload Seed Data")
+                                .font(Theme.body())
+                                .foregroundColor(Theme.textPrimary)
+                            
+                            Spacer()
+                        }
+                        .padding(Theme.spacingL)
+                        .background(Theme.cardBackground)
+                        .cornerRadius(Theme.cornerRadiusM)
+                    }
+                }
             }
         }
     }

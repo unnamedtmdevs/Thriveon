@@ -11,6 +11,11 @@ import SwiftUI
 struct ThriveonApp: App {
     @AppStorage(Constants.hasCompletedOnboarding) private var hasCompletedOnboarding = false
     
+    init() {
+        // Создаем seed данные при первом запуске
+        SeedDataService.shared.createSeedDataIfNeeded()
+    }
+    
     var body: some Scene {
         WindowGroup {
             if hasCompletedOnboarding {

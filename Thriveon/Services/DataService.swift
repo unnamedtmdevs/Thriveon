@@ -118,5 +118,6 @@ class DataService: ObservableObject {
         saveHabits()
         saveUserProfile()
         userDefaults.set(false, forKey: Constants.hasCompletedOnboarding)
+        userDefaults.set(false, forKey: "hasCreatedSeedData")
     }
 }

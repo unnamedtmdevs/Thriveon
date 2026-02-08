@@ -78,16 +78,14 @@ struct HabitsView: View {
         ScrollView {
             VStack(spacing: Theme.spacingL) {
                 ForEach(viewModel.habits) { habit in
-                    Button(action: {
-                        selectedHabit = habit
-                    }) {
-                        HabitCard(habit: habit) {
-                            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                                viewModel.toggleHabitCompletion(habit.id)
-                            }
+                    HabitCard(habit: habit) {
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                            viewModel.toggleHabitCompletion(habit.id)
                         }
                     }
-                    .buttonStyle(PlainButtonStyle())
+                    .onTapGesture {
+                        selectedHabit = habit
+                    }
                 }
             }
             .padding(Theme.spacingL)
