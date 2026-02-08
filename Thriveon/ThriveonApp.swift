@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct ThriveonApp: App {
+    @AppStorage(Constants.hasCompletedOnboarding) private var hasCompletedOnboarding = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if hasCompletedOnboarding {
+                MainView()
+            } else {
+                OnboardingView()
+            }
         }
     }
 }
